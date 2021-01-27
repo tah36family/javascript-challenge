@@ -26,17 +26,18 @@ function buildData(data){
 
 function updateFilter(){
   // Save the element, value and id of the filter that was changed
-  var changedElement = 
-  var elementValue = 
-  var filterId = 
+  var changedElement = d3.select(this).select("input");
+  var elementValue =  changedElement.property("value");
+  var filterId = changedElement.attr("id");
 
   // If a filter value was entered then add that filterID and value to the filter's list. Otherwise, clear that filter from the filter's object
-  if 
+  if (elementValue) {
+    filters[filterId] = elementValue;
+  }
+  else {
+    delete filters[filterId];
+  }
 
-  else
-
-  filterTable();
-}
 
 function filterTable(){
   let filteredData = tableData;
